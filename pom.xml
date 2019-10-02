@@ -9,7 +9,7 @@
 		<version>2.0.0</version>
 	</parent>
 	<groupId>fr.bpcesa.helloword</groupId>
-	<artifactId>gs-spring-boot-docker</artifactId>
+	<artifactId>spring-boot-docker</artifactId>
 	<version>0.1.0</version>
 	<packaging>jar</packaging>
 	<name>Spring Boot Docker</name>
