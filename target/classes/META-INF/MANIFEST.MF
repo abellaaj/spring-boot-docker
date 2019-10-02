@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: bellaaj
+Build-Jdk: 1.8.0_181
+Main-Class: hello.Application
+Created-By: Maven Integration for Eclipse
+Maven-version: 0.1.0
+Maven-build-timestamp: 20191002144318
+Maven-artefactId: gs-spring-boot-docker
+Maven-groupId: fr.bpcesa.helloword
+
