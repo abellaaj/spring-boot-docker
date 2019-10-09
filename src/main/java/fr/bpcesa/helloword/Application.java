@@ -1,4 +1,4 @@
-package hello;
+package fr.bpcesa.helloword;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

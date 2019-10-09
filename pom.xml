@@ -21,6 +21,7 @@
 		<docker.image.prefix>springio</docker.image.prefix>
 		<java.version>1.8</java.version>
 		<start-class>hello.Application</start-class>
+		<skipTests>true</skipTests>
 	</properties>
 
 	<build>
@@ -55,50 +56,39 @@
 				</executions>
 				<configuration>
 					<repository>picnex000.dom101.mapres:8084/bpcesa/siq/${project.artifactId}</repository>
-					<contextDirectory>${project.build.directory}</contextDirectory>
+					<!-- contextDirectory>${project.build.directory}</contextDirectory-->
 					<tag>${project.version}</tag>
 					<pullNewerImage>false</pullNewerImage>
 				</configuration>
 			</plugin>
 			<!-- end::plugin[] -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>${maven-resources-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>docker-resources</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>target/</outputDirectory>
-							<resources>
-								<resource>
-									<directory>src/main/docker/</directory>
-									<filtering>false</filtering>
-									<excludes>
-										<exclude>**/*.yml</exclude>
-									</excludes>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+			<!-- plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-resources-plugin</artifactId>
+				<executions> <execution> <id>docker-resources</id> <phase>validate</phase>
+				<goals> <goal>copy-resources</goal> </goals> <configuration> <outputDirectory>target/</outputDirectory>
+				<resources> <resource> <directory>src/main/docker/</directory> <filtering>false</filtering>
+				<excludes> <exclude>**/*.yml</exclude> </excludes> </resource> </resources>
+				</configuration> </execution> </executions> </plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.1</version>
 				<configuration>
 					<archive>
 						<manifest>
-							 <mainClass>hello.Application</mainClass>
+							<mainClass>hello.Application</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
 			</plugin>
+			<!-- pour faire le skip test on ajoute le pluggin suivant -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M3</version>
+				<configuration>
+					<skipTests>${skipTests}</skipTests>
+				</configuration>
+			</plugin>
+
 		</plugins>
 
 	</build>
